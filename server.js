@@ -29,10 +29,34 @@
 //   console.log(`🚀 Server running on port ${PORT}`);
 // });
 
+// const express = require('express');
+// const dotenv = require('dotenv');
+// const cors = require('cors');
+// const cookieParser = require('cookie-parser');
+// const connectDB = require('./config/db');
+
+// dotenv.config();
+// connectDB();
+
+// const app = express();
+
+// app.use(cors({
+//   origin: 'https://auth-fronetnd-ufmv.vercel.app',
+//   credentials: true  // ✅ cookies allow karta hai
+// }));
+// app.use(express.json());
+// app.use(cookieParser()); // ✅ cookies parse karta hai
+
+// app.use('/api/auth', require('./routes/auth'));
+
+// app.get('/', (req, res) => res.send('Backend chal raha hai ✅'));
+
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const cookieParser = require('cookie-parser');
 const connectDB = require('./config/db');
 
 dotenv.config();
@@ -42,14 +66,12 @@ const app = express();
 
 app.use(cors({
   origin: 'https://auth-fronetnd-ufmv.vercel.app',
-  credentials: true  // ✅ cookies allow karta hai
+  credentials: true
 }));
 app.use(express.json());
-app.use(cookieParser()); // ✅ cookies parse karta hai
 
 app.use('/api/auth', require('./routes/auth'));
 
 app.get('/', (req, res) => res.send('Backend chal raha hai ✅'));
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+module.exports = app;
