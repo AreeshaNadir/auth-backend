@@ -60,7 +60,6 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 
 dotenv.config();
-connectDB();
 
 const app = express();
 
@@ -69,6 +68,9 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
+
+// DB Connect
+connectDB();
 
 app.use('/api/auth', require('./routes/auth'));
 
